@@ -73,8 +73,24 @@ import item.Potions
         return false
     }
 
-    fun boirepotion(){
-        avoirPotion()
+    fun boirePotion() {
+        if (avoirPotion()) {
+            var potions: MutableList<Potions> = mutableListOf()
+            for (item in this.inventaire) {
+                if (item is Potions) {
+                    potions.add(item)
+                }
+            }
+            println("Liste des potions")
+            var i = 0
+            for (unePotion in potions) {
+                println("$i => ${unePotion.nom}")
+            }
+            println("Saisir la potion")
+            var indexPotion = readln().toInt()
+            var laPotion = potions[indexPotion]
+            laPotion.utiliser(this)
+        }
     }
 
 
