@@ -1,6 +1,8 @@
 package jeu
+import com.sun.org.apache.xpath.internal.functions.FuncFalse
 import kotlin.random.Random
 import personnage.Personnage
+import sun.font.TrueTypeFont
 
 class Combat(
     val jeu :Jeu,
@@ -9,7 +11,7 @@ class Combat(
     var nombreTours: Int = 1
 
     // Méthode pour simuler un tour de combat du joueur
-    fun tourDeJoueur(Attaquer:Int,Passer:Int) {
+    fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
         val actions = mapOf(
@@ -20,10 +22,21 @@ class Combat(
        for(uneAction in actions){
            println(" ${uneAction.key} ${uneAction.value}")
        }
-        if (){
-
+        var choixValide = false
+        while(!choixValide) {
+            var choix = readln()
+            if (choix == "1"){
+                choixValide = true
+                this.jeu.joueur.attaque(monstre)
+            }
+            else if (choix == "2"){
+                choixValide = true
+                println("Vous passez votre tour :")
+            }
+            else {
+                println("Mauvaise saisie !!!")
+            }
         }
-        this.jeu.joueur.attaque(monstre)
         println("\u001b[0m")
     }
 
