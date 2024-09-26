@@ -4,10 +4,15 @@ import personnage.Personnage
 
 
 class Armes (
-    val nom : String,
+    nom : String,
+    description:String,
     val qualite: Qualite,
     val type : TypeArmes
-){
+):Item(nom,description){
+
+    /**Une méthode qui permet de calculer les degat d'une arme
+     * @return Int les degat de l'arme
+     */
     fun calculerDegats(): Int{
         var degats = 0
 
@@ -25,7 +30,7 @@ class Armes (
 
         return degats
     }
-    fun utiliser(cible: Personnage){
+    override fun utiliser(cible: Personnage){
 
     }
 }

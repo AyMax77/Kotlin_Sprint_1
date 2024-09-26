@@ -2,12 +2,12 @@ package item
 
 import personnage.Personnage
 
-class Armure(val nom:String,val description:Int,val qualite: Qualite,val type: TypeArmure) {
+class Armure(nom:String,description:String,val qualite: Qualite,val type: TypeArmure) : Item(nom,description){
     fun calculProtection():Int{
         return type.BonusProtec + qualite.bonusRarete
     }
 
-    fun utiliser(cible: Personnage){
+    override fun utiliser(cible: Personnage){
 
     }
 }
