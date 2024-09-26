@@ -1,7 +1,10 @@
 package personnage
 import item.Armes
 import item.Armure
+import item.Bombes
 import item.Item
+import item.Potions
+
 // salutation les collègues
  class Personnage(
     val nom: String,
@@ -51,7 +54,30 @@ import item.Item
              return
          }
         println("$nom attaque ${adversaire.nom} avec une attaque de base et inflige $degats points de dégâts.")
+     }
+    fun avoirPotion(): Boolean {
+        for (item in this.inventaire) {
+            if (item is Potions) {
+                return true
+            }
+        }
+        return false
     }
+
+    fun avoirbombe(): Boolean {
+        for (item in this.inventaire) {
+            if (item is Bombes) {
+                return true
+            }
+        }
+        return false
+    }
+
+    fun boirepotion(){
+        avoirPotion()
+    }
+
+
 
     override fun toString(): String {
         return "$nom (PV: $pointDeVie/$pointDeVieMax, Attaque: $attaque, Défense: $defense, Endurance: $endurance, Vitesse: $vitesse)"

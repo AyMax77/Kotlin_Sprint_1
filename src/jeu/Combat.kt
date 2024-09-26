@@ -11,9 +11,6 @@ class Combat(
     var nombreTours: Int = 1
 
     // Méthode pour simuler un tour de combat du joueur
-    /**
-     *@param c
-     */
     fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
