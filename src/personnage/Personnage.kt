@@ -1,5 +1,5 @@
 package personnage
-
+// salutation les collègues
  class Personnage(
     val nom: String,
     var pointDeVie: Int,

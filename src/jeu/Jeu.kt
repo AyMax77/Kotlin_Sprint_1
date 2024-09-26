@@ -44,11 +44,34 @@ class Jeu(monstres: List<Personnage>) {
      *
      */
     fun creerPersonnage(): Personnage {
-        println("Création votre personnage:")
-        // TODO Mission 1.1
-        val hero = Personnage("YYY",150,150,12,8,8,12)
-        this.joueur= hero
-        return hero
+        println("Création de votre personnage:")
+        var points = 40
+        println("Veuillez rentrer votre nom: ")
+       val futurNom= readln()!!.toString()
+        do {
+            println("Vous avez 40 points pour attaque,defense,endurance et vitesse")
+            println("Veuillez rentrer votre: attaque: ")
+            var Futurattaque= readln()!!.toInt()
+            points -= Futurattaque
+            println("Il vous reste $points")
+            println("Veuillez rentrer votre defense: ")
+            var FuturDef= readln()!!.toInt()
+            points -= FuturDef
+            println("Il vous reste $points")
+            println("Veuillez rentrer votre endurance: ")
+            var Futurendurance = readln()!!.toInt()
+            points -= Futurendurance
+            println("Il vous reste $points")
+            println("Veuillez rentrer votre vitesse: ")
+            var Futurvitesse= readln()!!.toInt()
+            points -= Futurvitesse
+            println("Il vous reste $points")
+            var FuturPVMax = 50 + 10*Futurendurance
+            val hero = Personnage(futurNom,FuturPVMax,FuturPVMax,Futurattaque,FuturDef,Futurendurance,Futurvitesse)
+            this.joueur = hero
+            return hero
+        } while(points >= 0)
+
     }
     
 

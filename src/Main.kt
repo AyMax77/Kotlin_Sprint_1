@@ -24,11 +24,36 @@ fun main(args: Array<String>) {
         defense = 4,
         vitesse = 11,
         endurance = 6)
+    val kobold = Personnage(
+        "Kob le Kobold",
+        pointDeVie = 10,
+        pointDeVieMax = 10,
+        attaque = 4,
+        defense = 4,
+        vitesse = 11,
+        endurance = 6)
+    val troll = Personnage(
+        "Groll",
+        pointDeVie = 80,
+        pointDeVieMax = 80,
+        attaque = 15,
+        defense = 10,
+        vitesse = 5,
+        endurance = 10)
+    val orc = Personnage(
+        "Morc",
+        pointDeVie = 40,
+        pointDeVieMax = 40,
+        attaque = 10,
+        defense = 9,
+        vitesse = 6,
+        endurance = 8)
+
 
     // TODO Intermission 1 : Ajouter d'autres monstres
 
     //TODO On ajoute les monstres a la liste de monstres du jeu
-    val jeu = Jeu(listOf( gobelin))
+    val jeu = Jeu(listOf( gobelin,kobold,troll,orc))
     //Lancement du jeu
     jeu.lancerCombat()
 }

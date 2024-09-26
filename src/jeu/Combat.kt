@@ -1,5 +1,5 @@
 package jeu
-
+import kotlin.random.Random
 import personnage.Personnage
 
 class Combat(
@@ -9,9 +9,20 @@ class Combat(
     var nombreTours: Int = 1
 
     // Méthode pour simuler un tour de combat du joueur
-    fun tourDeJoueur() {
+    fun tourDeJoueur(Attaquer:Int,Passer:Int) {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
+        val actions = mapOf(
+            1 to "Attaquer",
+            2 to "Passer"
+        )
+        println("Choisir une action :")
+       for(uneAction in actions){
+           println(" ${uneAction.key} ${uneAction.value}")
+       }
+        if (){
+
+        }
         this.jeu.joueur.attaque(monstre)
         println("\u001b[0m")
     }
@@ -20,7 +31,11 @@ class Combat(
     fun tourDeMonstre() {
         println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
         //TODO Mission 1.3
-        this.monstre.attaque(this.jeu.joueur)
+        var random = (1..100).random()
+        if (random<=70){
+        this.monstre.attaque(this.jeu.joueur)}
+
+
         println("\u001b[0m")
     }
 
