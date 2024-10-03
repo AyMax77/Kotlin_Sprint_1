@@ -82,7 +82,19 @@ class Jeu(monstres: List<Personnage>) {
             if(points<0) points = 0
             println("Il vous reste $points")
             var FuturPVMax = 50 + 10*Futurendurance
-            val hero = Personnage(futurNom,FuturPVMax,FuturPVMax,Futurattaque,FuturDef,Futurendurance,Futurvitesse,mutableListOf(epeelongue,hyper_potion),epeelongue,cotteDeMaille)
+            val hero = Personnage(
+                futurNom,
+                FuturPVMax,
+                FuturPVMax,
+                Futurattaque,
+                FuturDef,
+                Futurendurance,
+                Futurvitesse,
+                mutableListOf(epeelongue, hyper_potion),
+                epeelongue,
+                cotteDeMaille,
+                armurePrincipal = cotteDeMaille
+            )
             this.joueur = hero
             return hero
         } while(points >= 0)

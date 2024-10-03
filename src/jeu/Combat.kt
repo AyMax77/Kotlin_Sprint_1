@@ -1,5 +1,7 @@
 package jeu
 import com.sun.org.apache.xpath.internal.functions.FuncFalse
+import item.Item
+import item.Potions
 import kotlin.random.Random
 import personnage.Personnage
 import sun.font.TrueTypeFont
@@ -13,28 +15,59 @@ class Combat(
     // Méthode pour simuler un tour de combat du joueur
     fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
-       //TODO Mission 1.2
-        val actions = mapOf(
+
+        val actions = mutableMapOf(
             1 to "Attaquer",
-            2 to "Passer"
+            2 to "Boire potion",
+            3 to "Passer",
+            4 to "Utiliser un objet"
         )
+
+        // Affichage des actions disponibles
         println("Choisir une action :")
-       for(uneAction in actions){
-           println(" ${uneAction.key} ${uneAction.value}")
-       }
+        for (uneAction in actions) {
+            println(" ${uneAction.key} - ${uneAction.value}")
+        }
+
         var choixValide = false
-        while(!choixValide) {
-            var choix = readln()
-            if (choix == "1"){
-                choixValide = true
-                this.jeu.joueur.attaque(monstre)
-            }
-            else if (choix == "2"){
-                choixValide = true
-                println("Vous passez votre tour :")
-            }
-            else {
-                println("Mauvaise saisie !!!")
+        while (!choixValide) {
+            val choix = readln()
+
+            when (choix) {
+                "1" -> { // Attaquer
+                    choixValide = true
+                    this.jeu.joueur.attaque(monstre)
+                }
+                "2" -> { // Boire une potion
+                    choixValide = true
+                    println("Vous avez bu une potion")
+                    this.jeu.joueur.boirePotion()
+                }
+                "3" -> { // Passer son tour
+                    choixValide = true
+                    println("Vous passez votre tour.")
+                }
+                "4" -> { // Utiliser un objet
+                    choixValide = true
+                    this.jeu.joueur.afficherInventaire()
+                    var choixObjetValide = false
+                    while (!choixObjetValide) {
+                        println("Choisissez un objet en saisissant l'index correspondant :")
+                        val index = readln().toIntOrNull()  // Lecture de l'index
+
+                        if (index != null && index in 0 until this.jeu.joueur.inventaire.size) {
+                            val objet = this.jeu.joueur.inventaire[index]
+                            println("Vous avez choisi d'utiliser ${objet.nom}.")
+                            objet.utiliser(this.jeu.joueur)  // Utiliser l'objet sélectionné
+                            choixObjetValide = true
+                        } else {
+                            println("Index invalide. Veuillez réessayer.")
+                        }
+                    }
+                }
+                else -> {
+                    println("Mauvaise saisie !!!")
+                }
             }
         }
         println("\u001b[0m")
@@ -47,6 +80,14 @@ class Combat(
         var random = (1..100).random()
         if (random<=70){
         this.monstre.attaque(this.jeu.joueur)}
+        if(monstre.inventaire is Item){
+            if(monstre.avoirPotion()){ }
+            if(monstre.pointDeVieMax/monstre.pointDeVie >= 2){
+                if(random <= 10){
+                monstre.boirePotion()
+                }
+            }
+        }
 
 
         println("\u001b[0m")

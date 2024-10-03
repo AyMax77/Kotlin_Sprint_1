@@ -78,8 +78,7 @@ fun main(args: Array<String>) {
         endurance = 6,
         inventaire = mutableListOf(dague,),
         armePrincipal = epeelongue,
-        armure = cotteDeMaille,
-        armurePrincipal = cotteDeMaille)
+        armure = cotteDeMaille)
     val kobold = Personnage(
         "Kob le Kobold",
         pointDeVie = 10,
@@ -90,8 +89,7 @@ fun main(args: Array<String>) {
         endurance = 6,
         inventaire = mutableListOf(hache),
         armePrincipal = hache,
-        armure = Cuir,
-        armurePrincipal = Cuir)
+        armure = Cuir)
     val troll = Personnage(
         "Groll",
         pointDeVie = 80,
@@ -102,8 +100,7 @@ fun main(args: Array<String>) {
         endurance = 10,
         inventaire = mutableListOf(arclong),
         armePrincipal = arclong,
-        armure = CuirCloute,
-        armurePrincipal = CuirCloute)
+        armure = CuirCloute)
     val orc = Personnage(
         "Lorc",
         pointDeVie = 40,
@@ -114,8 +111,7 @@ fun main(args: Array<String>) {
         endurance = 8,
         inventaire = mutableListOf(marteauguerre),
         armePrincipal = marteauguerre,
-        armure = Pectoral,
-        armurePrincipal = Pectoral)
+        armure = Pectoral)
 
     val jeu = Jeu(listOf(gobelin,kobold,troll,orc))
     //Lancement du jeu
