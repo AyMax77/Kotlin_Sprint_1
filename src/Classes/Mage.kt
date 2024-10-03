@@ -19,7 +19,7 @@ class Mage (nom: String,
     val grimoire : MutableList<Sort>): Personnage(nom,pointDeVie,pointDeVieMax,attaque,defense,endurance,vitesse,inventaire,armePrincipal,armure) {
 
     override fun toString(): String {
-        return "Mage  ${super.toString()} (grimoreEquipe = $grimoire"
+        return "Guerrier ${super.toString()} (grimoreEquipe = $grimoire"
     }
 
     fun afficherGrimoire(){
