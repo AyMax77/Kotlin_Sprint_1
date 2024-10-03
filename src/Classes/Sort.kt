@@ -61,4 +61,12 @@ class Sort(val nom:String,var effet:(Personnage, Personnage ) -> Unit) {
 
         }
     })
+    val soins = Sort("Soins", { caster, self ->
+        run {
+            val tirageDes = TirageDes(1, 6)
+            var soins = tirageDes.lance()
+            self.pointDeVie += soins
+            println("Le soin vous soigne $soins à ${self.nom}")
+        }
+    })
 }
