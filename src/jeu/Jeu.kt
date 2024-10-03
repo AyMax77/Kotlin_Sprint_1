@@ -92,8 +92,7 @@ class Jeu(monstres: List<Personnage>) {
                 Futurvitesse,
                 mutableListOf(epeelongue, hyper_potion),
                 epeelongue,
-                cotteDeMaille,
-                armurePrincipal = cotteDeMaille
+                cotteDeMaille
             )
             this.joueur = hero
             return hero
