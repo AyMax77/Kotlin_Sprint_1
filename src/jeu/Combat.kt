@@ -65,6 +65,7 @@ class Combat(
                         }
                     }
                 }
+
                 else -> {
                     println("Mauvaise saisie !!!")
                 }
