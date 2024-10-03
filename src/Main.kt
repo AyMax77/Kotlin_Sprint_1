@@ -16,15 +16,15 @@ val qualiteLegendaire = Qualite("legendaire", 4, "\u001B[33m")
 
 //TODO Sprint 1 Mission 2A et 2B Création des types d'armes/armures
 //Créations des types d'armes
-val typedague = TypeArmes(1,4,3,18)
-val typeBaton = TypeArmes(1,6,2,20)
-val typeLance = TypeArmes(1,8,3,20)
-val typeArbalete = TypeArmes(1,8,2,19)
-val typeEpeeCourte = TypeArmes(1,6,2,19)
-val typeHache = TypeArmes(1,6,3,20)
-val typeEpeeLongue = TypeArmes(1,8,2,19)
-val typeMarteauGuerre = TypeArmes(1,8,3,20)
-val typeArcLong = TypeArmes(1,8,3,20)
+val typedague = TypeArmes(2,4,3,18)
+val typeBaton = TypeArmes(2,6,2,20)
+val typeLance = TypeArmes(2,8,3,20)
+val typeArbalete = TypeArmes(2,8,2,19)
+val typeEpeeCourte = TypeArmes(2,6,2,19)
+val typeHache = TypeArmes(2,6,3,20)
+val typeEpeeLongue = TypeArmes(2,8,2,19)
+val typeMarteauGuerre = TypeArmes(2,8,3,20)
+val typeArcLong = TypeArmes(2,8,3,20)
 //Créations des armes
 val arclong = Armes("Arc long", "Arc long",qualiteCommun,typeArcLong)
 val arbaletelegere = Armes("Arbalète légère","Arbalète pas très lourde",qualiteCommun, typeArbalete)
@@ -78,7 +78,7 @@ fun main(args: Array<String>) {
         endurance = 6,
         inventaire = mutableListOf(dague,),
         armePrincipal = epeelongue,
-        armure = cotteDeMaille)
+        armure = cotteDeMaille )
     val kobold = Personnage(
         "Kob le Kobold",
         pointDeVie = 10,

@@ -53,52 +53,90 @@ class Jeu(monstres: List<Personnage>) {
      */
     fun creerPersonnage(): Personnage {
         println("Création de votre personnage:")
-        var points = 40
-        println("Veuillez rentrer votre nom: ")
-       val futurNom= readln()!!.toString()
-        /**
-         * @r
-         */
-        do {
-            println("Vous avez 40 points pour attaque,defense,endurance et vitesse")
-            println("Veuillez rentrer votre: attaque: ")
-            var Futurattaque= readln()!!.toInt()
-            points -= Futurattaque
-            if(points<0) points = 0
-            println("Il vous reste $points")
-            println("Veuillez rentrer votre defense: ")
-            var FuturDef= readln()!!.toInt()
-            points -= FuturDef
-            if(points<0) points = 0
-            println("Il vous reste $points")
-            println("Veuillez rentrer votre endurance: ")
-            var Futurendurance = readln()!!.toInt()
-            points -= Futurendurance
-            if(points<0) points = 0
-            println("Il vous reste $points")
-            println("Veuillez rentrer votre vitesse: ")
-            var Futurvitesse= readln()!!.toInt()
-            points -= Futurvitesse
-            if(points<0) points = 0
-            println("Il vous reste $points")
-            var FuturPVMax = 50 + 10*Futurendurance
-            val hero = Personnage(
-                futurNom,
-                FuturPVMax,
-                FuturPVMax,
-                Futurattaque,
-                FuturDef,
-                Futurendurance,
-                Futurvitesse,
-                mutableListOf(epeelongue, hyper_potion),
-                epeelongue,
-                cotteDeMaille
-            )
-            this.joueur = hero
-            return hero
-        } while(points >= 0)
 
+        var points = 40 // Total des points à distribuer
+        println("Vous avez $points points à répartir entre attaque, défense, endurance et vitesse.")
+        println("Veuillez rentrer votre nom: ")
+        val futurNom = readln()!!.toString()
+
+        var Futurattaque = 0
+        var FuturDef = 0
+        var Futurendurance = 0
+        var Futurvitesse = 0
+
+        // Saisie des points pour chaque caractéristique
+        println("Veuillez entrer vos points pour chaque caractéristique (vous avez $points points au total):")
+
+        // Saisie de l'attaque
+        do {
+            println("Attaque (points restants: $points): ")
+            Futurattaque = readln()!!.toInt()
+            if (Futurattaque > points) {
+                println("Vous ne pouvez pas mettre plus de $points points. Veuillez réessayer.")
+            }
+        } while (Futurattaque > points)
+        points -= Futurattaque
+
+        // Saisie de la défense
+        do {
+            println("Défense (points restants: $points): ")
+            FuturDef = readln()!!.toInt()
+            if (FuturDef > points) {
+                println("Vous ne pouvez pas mettre plus de $points points. Veuillez réessayer.")
+            }
+        } while (FuturDef > points)
+        points -= FuturDef
+
+        // Saisie de l'endurance
+        do {
+            println("Endurance (points restants: $points): ")
+            Futurendurance = readln()!!.toInt()
+            if (Futurendurance > points) {
+                println("Vous ne pouvez pas mettre plus de $points points. Veuillez réessayer.")
+            }
+        } while (Futurendurance > points)
+        points -= Futurendurance
+
+        // Saisie de la vitesse
+        do {
+            println("Vitesse (points restants: $points): ")
+            Futurvitesse = readln()!!.toInt()
+            if (Futurvitesse > points) {
+                println("Vous ne pouvez pas mettre plus de $points points. Veuillez réessayer.")
+            }
+        } while (Futurvitesse > points)
+        points -= Futurvitesse
+
+        // Calcul des points de vie maximum
+        val FuturPVMax = 50 + 10 * Futurendurance
+
+        // Choisir classe
+        val choisirClasse = mutableMapOf(
+            1 to "Guerrir",
+            2 to "Mage",
+            3 to "Voleur"
+        )
+
+        // Création du personnage avec les attributs choisis
+        val hero = Personnage(
+            futurNom,
+            FuturPVMax,
+            FuturPVMax,
+            Futurattaque,
+            FuturDef,
+            Futurendurance,
+            Futurvitesse,
+            mutableListOf(epeelongue, hyper_potion),
+            epeelongue,
+            cotteDeMaille
+        )
+
+        // Assignation du personnage créé à la variable this.joueur (si c'est nécessaire dans votre contexte)
+        this.joueur = hero
+        return hero
     }
-    
+
 
 }
+    
+

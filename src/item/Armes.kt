@@ -16,7 +16,7 @@ class Armes (
     fun calculerDegats(): Int{
         var degats = 0
 
-        val de1 = TirageDes(1, 8)
+        val de1 = TirageDes(this.type.nombresDes, this.type.valeurDeMax)
         val tirage1 = de1.lance()
         val de2 = TirageDes(1,20)
         val tirage2 = de2.lance()

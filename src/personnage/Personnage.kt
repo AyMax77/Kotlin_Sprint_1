@@ -6,7 +6,7 @@ import item.Item
 import item.Potions
 
 // salutation les collègues
- class Personnage(
+ open class Personnage(
     val nom: String,
     var pointDeVie: Int,
     val pointDeVieMax: Int,
@@ -16,8 +16,7 @@ import item.Potions
     var vitesse: Int,
     var inventaire : MutableList<Item> = mutableListOf(),
     var armePrincipal : Armes ?,
-    var armure: Armure ?,
-
+    var armure: Armure ?
 ) {
 
 
@@ -54,8 +53,8 @@ import item.Potions
              return this.defense/2
          }
          else {
-             defense = defense + armure!!.calculProtection() + this.defense / 2
-             return this.defense;
+             var defense = defense + armure!!.calculProtection() + this.defense / 2
+             return defense
          }
      }
 
@@ -69,7 +68,7 @@ import item.Potions
     }
 
      // Méthode pour attaquer un adversaire
-     fun attaque(adversaire: Personnage) {
+     open fun attaque(adversaire: Personnage) {
          var degat=0
        if( this.armePrincipal==null){
            degat=this.attaque/2
